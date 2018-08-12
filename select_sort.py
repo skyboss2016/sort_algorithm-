@@ -10,8 +10,6 @@ def select_sort(alist):
 
         if min_index != i:
             alist[i], alist[min_index] = alist[min_index], alist[i]
-
-
     return alist
 
 
