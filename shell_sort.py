@@ -3,7 +3,7 @@ def shell_sort(alist):
     gep = n // 2
     while gep > 0:
         for i in range(gep, n):
-            print(i)
+            # print(i)
             while i - gep >= 0 and alist[i] < alist[i - gep]:
                 alist[i], alist[i - gep] = alist[i - gep], alist[i]
                 print('a')
