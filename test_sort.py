@@ -13,7 +13,7 @@ def test_sort_algorithm(sort_func, *, once=False, specify_list=None, list_len=9)
     :type once: bool
     :param specify_list: 指定排序列表
     :type specify_list: list
-    :return:
+    :return: None
     """
     sort_list = specify_list or [random.randint(11, 99) for _ in range(list_len)]
     if once:
@@ -28,7 +28,7 @@ def test_sort_algorithm(sort_func, *, once=False, specify_list=None, list_len=9)
         else:
             print('测试通过:结果:', sort_list)
     else:
-        test_lists = permutations(sort_list, len(sort_list))
+        test_lists = permutations(sort_list)
         for temp_tuple in test_lists:
             test_list = list(temp_tuple)
             compare_list = test_list.copy()
