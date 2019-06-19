@@ -26,7 +26,7 @@ def test_sort_algorithm(sort_func, *, once=False, specify_list=None, list_len=9)
             print('错误的排序:', sort_list)
             print('正确的排序:', compare_list)
         else:
-            print('测试通过:结果:', sort_list)
+            print('测试通过\n结果:', sort_list)
     else:
         test_lists = permutations(sort_list)
         for temp_tuple in test_lists:

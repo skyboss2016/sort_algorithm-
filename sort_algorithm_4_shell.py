@@ -3,7 +3,7 @@
     1.插入类算法.
     2.本质上是进行了分组的排序算法, 分组的方法是间隔一定长度的位置的数字划分为一组进行插入排序
     3.将长度间隔减小, 再次进行插入排序, 最后间隔变为1
-    4.使用while循环的从右到左是最快的希尔循环.非常快.
+    4.使用while循环的从右到左是最快的希尔循环.非常快. 在python中
 
     序列:
     [6, 3, 5, 8]
@@ -45,6 +45,7 @@ def shell_sort1(unsort):
                     unsort[num], unsort[i] = unsort[i], unsort[num]
                 num += step
         step //= 2
+    return unsort
 
 
 def shell_sort2(unsort):
@@ -57,6 +58,7 @@ def shell_sort2(unsort):
                 if unsort[j] > unsort[i]:
                     unsort[j], unsort[i] = unsort[i], unsort[j]
         step //= 2
+    return unsort
 
 
 # 从右到左内循环使用for, 很慢是while的两倍

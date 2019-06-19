@@ -55,6 +55,7 @@ def insert_sort3(unsort):
         while i > 0 and unsort[i] < unsort[i - 1]:
             unsort[i], unsort[i - 1] = unsort[i - 1], unsort[i]
             i -= 1
+    return unsort
 
 
 # 折半插入排序
