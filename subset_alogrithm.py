@@ -33,8 +33,8 @@ def subset1(s):
 def subset2(s):
     if len(s) <= 0:
         return [[]]
-    font = s[0]
-    result = subset2(s[1:])
+    font = s.pop()
+    result = subset2(s)
     length = len(result)
     for num in range(length):
         m = result[num].copy()
