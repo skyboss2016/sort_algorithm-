@@ -115,9 +115,9 @@ def quick_sort3(unsort_list):
 if __name__ == '__main__':
     from test_sort import test_sort_algorithm
 
-    # print('我理解的方法.')
-    # test_sort_algorithm(quick_sort)
-    # print('另一种方法.')
-    # test_sort_algorithm(quick_sort2)
+    print('我理解的方法.')
+    test_sort_algorithm(quick_sort)
+    print('另一种方法.')
+    test_sort_algorithm(quick_sort2)
     print('第三种方法.')
     test_sort_algorithm(quick_sort3)
