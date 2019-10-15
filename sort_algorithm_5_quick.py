@@ -34,9 +34,6 @@
 
 
 # 这种快速排序就叫左右横跳快速排序吧.
-from random import randint
-
-
 def quick_sort(unsort_list):
     start = 0
     finish = len(unsort_list) - 1
