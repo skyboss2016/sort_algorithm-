@@ -33,6 +33,10 @@
 """
 
 
+# 这种快速排序就叫左右横跳快速排序吧.
+from random import randint
+
+
 def quick_sort(unsort_list):
     start = 0
     finish = len(unsort_list) - 1
@@ -54,12 +58,13 @@ def quick_sort(unsort_list):
                 left += 1
             unsort[left], unsort[pivot] = unsort[pivot], unsort[left]
             pivot = left
-        inner_sort(unsort, first, pivot - 1)
+        inner_sort(unsort, first, pivot - 1)   # 这里和下面一行, 只要找到了这个位置就应该定下来.所以要派除了本次找到的位置以外的位置.注意加一和减一.
         inner_sort(unsort, pivot + 1, last)
 
     inner_sort(unsort_list, start, finish)
 
 
+# 这种快速排序就叫左扔右扔快速排序吧.
 def quick_sort2(unsort_list):
     start = 0
     finish = len(unsort_list) - 1
@@ -69,7 +74,7 @@ def quick_sort2(unsort_list):
             return
         left = first
         right = last
-        pivot = unsort[first]
+        pivot = unsort[first]  # 不能随便换其他值哦.
         while left < right:
             while left < right and unsort[right] >= pivot:
                 right -= 1
@@ -91,15 +96,17 @@ def quick_sort3(unsort_list):
     def inner_sort(unsort, left, right):
         if left >= right:
             return
-        # middle = left      # middle的值可以设为left, right, 或(left + right) // 2
-        # middle指定的就是下边的left,
-        pivot = unsort[left]
-        unsort[left], unsort[right] = unsort[right], unsort[left]
+        # value的值时left到right之间的任意值.(注意用确切的数字表示一定会有问题)(也就是value = randint(left, right))
+        value = left  # randint(left, right)
         boundary = left
-        for i in range(left, right):
-            if unsort[i] < pivot:
-                unsort[i], unsort[boundary] = unsort[boundary], unsort[i]
+        begin = left
+        unsort[value], unsort[right] = unsort[right], unsort[value]
+        while begin < right:
+            if unsort[begin] < unsort[right]:
+                if begin != boundary:
+                    unsort[begin], unsort[boundary] = unsort[boundary], unsort[begin]
                 boundary += 1
+            begin += 1
         unsort[boundary], unsort[right] = unsort[right], unsort[boundary]
 
         inner_sort(unsort, left, boundary - 1)
@@ -111,9 +118,9 @@ def quick_sort3(unsort_list):
 if __name__ == '__main__':
     from test_sort import test_sort_algorithm
 
-    print('我理解的方法.')
-    test_sort_algorithm(quick_sort)
-    print('另一种方法.')
-    test_sort_algorithm(quick_sort2)
+    # print('我理解的方法.')
+    # test_sort_algorithm(quick_sort)
+    # print('另一种方法.')
+    # test_sort_algorithm(quick_sort2)
     print('第三种方法.')
     test_sort_algorithm(quick_sort3)
