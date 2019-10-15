@@ -37,27 +37,23 @@ def quick_sort(unsort_list):
     start = 0
     finish = len(unsort_list) - 1
 
+    # 经过测试下边的代码不能修改.
+    # 2019.10.15 我感觉这是把pivot换到一个左边都是小于他, 右边都是大于他的算法.
+    # 经过测试pivot如果等于last, 第二三俩个while换一下就可以了. 对于俩个while处的注释, 只有在pivot等于first以及的一个while为left<=right时成立
     def inner_sort(unsort, first, last):
         if first >= last:
             return
-        left = pivot = first
+        left = pivot = first   # 经过测试 pivot设置为中间值时测试不通过.
         right = last
-        while left <= right:
-            while left <= right:
-                if unsort[right] >= unsort[pivot]:
-                    right -= 1
-                else:
-                    unsort[right], unsort[pivot] = unsort[pivot], unsort[right]
-                    pivot = right
-                    break
-
-            while left < right:
-                if unsort[left] <= unsort[pivot]:
-                    left += 1
-                else:
-                    unsort[left], unsort[pivot] = unsort[pivot], unsort[left]
-                    pivot = left
-                    break
+        while left < right:
+            while left < right and unsort[right] >= unsort[pivot]:  # 经过测试 第一个的小于等于(<=)不能改为(<), 上下调换也不行.
+                right -= 1
+            unsort[right], unsort[pivot] = unsort[pivot], unsort[right]
+            pivot = right
+            while left < right and unsort[left] <= unsort[pivot]:  # 经过测试 第一个这里的小于号(<)不能改为小于等于号(<=).
+                left += 1
+            unsort[left], unsort[pivot] = unsort[pivot], unsort[left]
+            pivot = left
         inner_sort(unsort, first, pivot - 1)
         inner_sort(unsort, pivot + 1, last)
 
