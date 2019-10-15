@@ -86,7 +86,7 @@ def quick_sort2(unsort_list):
     inner_sort(unsort_list, start, finish)
 
 
-# 这种的快排就叫他, 牛屄快排吧.
+# 这种的快排就叫他, 从左到右快排吧.
 def quick_sort3(unsort_list):
     start = 0
     finish = len(unsort_list) - 1
