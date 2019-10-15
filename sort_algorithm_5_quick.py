@@ -87,6 +87,7 @@ def quick_sort2(unsort_list):
 
 
 # 这种的快排就叫他, 从左到右快排吧.
+# 在起个名字, 双变量异步增量快速排序法.
 def quick_sort3(unsort_list):
     start = 0
     finish = len(unsort_list) - 1
@@ -105,7 +106,8 @@ def quick_sort3(unsort_list):
                     unsort[begin], unsort[boundary] = unsort[boundary], unsort[begin]
                 boundary += 1
             begin += 1
-        unsort[boundary], unsort[right] = unsort[right], unsort[boundary]
+        if boundary != right:
+            unsort[boundary], unsort[right] = unsort[right], unsort[boundary]
 
         inner_sort(unsort, left, boundary - 1)
         inner_sort(unsort, boundary + 1, right)
